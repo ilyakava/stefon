@@ -18,7 +18,7 @@ module Stefon
 
       def added_lines_by_file
         lines_per_file_store = Hash.new(0)
-        git_diff_as_array = GitUtil.git_diff_as_array('+')
+        git_diff_as_array = GitUtil.diff_as_array('+')
         GitUtil.lines_by_file(git_diff_as_array, filename_marker) do |filename, line_in_file|
           lines_per_file_store[filenames] += 1
         end

@@ -4,7 +4,7 @@ module Stefon
     module GitUtil
       CURRENT_BRANCH ||= %x(git rev-parse --abbrev-ref HEAD).sub("\n", "")
 
-      def top_commiters
+      def top_commiter
         git_commiters = %x(git shortlog -s -n)
         # make a hash of authors pointing to num commits
         top_commiters = Hash[git_commiters.split("\n").map { |numcommits_author| numcommits_author.strip.split("\t").reverse }]

@@ -6,8 +6,8 @@ module Stefon
       end
 
       def score_deleted_files
-        if (num_deleted_files = @repo.status.added.count) > 0
-          @scores[top_commiter] += num_deleted_files
+        if (num_deleted_files = @@grit.repo.status.added.count) > 0
+          @scores[GitUtil.top_commiter] += num_deleted_files
         end
         @scores
       end

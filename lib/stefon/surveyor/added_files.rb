@@ -6,8 +6,8 @@ module Stefon
       end
 
       def score_added_files
-        if (num_added_files = @repo.status.added.count) > 0
-          @scores[@top_commiter] += num_added_files
+        if (num_added_files = @@grit.repo.status.added.count) > 0
+          @scores[GitUtil.top_commiter] += num_added_files
         end
         @scores
       end
