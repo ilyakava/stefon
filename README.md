@@ -1,6 +1,5 @@
 # Stefon
 
-TODO: Write a gem description
 
 ## Installation
 
@@ -27,3 +26,11 @@ TODO: Write usage instructions here
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Todo
+Create one shared method for iterating through diff
+handle errors from surveryors
+remove dependency of Grit class on Git module
+exclude authors from
+* the grit module - file top author
+* the git module - repo top commiter

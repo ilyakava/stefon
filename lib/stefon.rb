@@ -1,5 +1,4 @@
 require "stefon/version"
+require "grit"
 
-module Stefon
-  # Your code goes here...
-end
+require "stefon/scores"
