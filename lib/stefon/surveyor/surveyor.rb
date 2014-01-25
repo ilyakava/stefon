@@ -21,11 +21,11 @@ module Stefon
     # A scaffold for concrete surveyors, meant to be extended
     # This class calculates whose code the gem user is affecting
     # the most for a particular kind of behavior (eg. line / file deletion)
-    class Surveyor
+    class Base
       attr_accessor :scores
 
       def initialize
-        @@grit = GritUtil.new
+        @@grit ||= GritUtil.new
         self.scores = SurveyorStore.new
       end
     end

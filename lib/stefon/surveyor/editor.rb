@@ -23,8 +23,7 @@ module Stefon
 
     # The editor weights the importance of each surveyor's report
     def combine_reports
-      # delete excluded authors at this point
-      aggregate = TEAM.collect(Surveyor::SurveyorStore.new) { |a, e| a.merge_scores(e.call) }
+      TEAM.collect(Surveyor::SurveyorStore.new) { |a, e| a.merge_scores(e.call) }
     end
 
     def summarize_results

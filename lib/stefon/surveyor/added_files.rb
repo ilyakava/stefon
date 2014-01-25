@@ -1,6 +1,6 @@
 module Stefon
   module Surveyor
-    class AddedFiles < Surveyor
+    class AddedFiles < Surveyor::Base
       def call
         score_added_files
       end

@@ -8,7 +8,7 @@ module Stefon
       # in the future it will make an instance of the Config class
       # for both the default and user specified config, both of which will be
       # read from yaml
-      Config.new
+      Config::Weights.new
     end
   end
 end

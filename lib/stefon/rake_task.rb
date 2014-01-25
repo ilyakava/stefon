@@ -29,7 +29,7 @@ module Stefon
       puts 'Running Stefon...' if verbose
       result = cli.run
       puts result
-      abort('Stefon failed!') if fail_on_error
+      # abort('Stefon failed!') if fail_on_error
     end
   end
 end

@@ -1,6 +1,6 @@
 module Stefon
   module Surveyor
-    class DeletedFiles < Surveyor
+    class DeletedFiles < Surveyor::Base
       def call
         score_deleted_files
       end

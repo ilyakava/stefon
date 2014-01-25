@@ -34,3 +34,7 @@ remove dependency of Grit class on Git module
 exclude authors from
 * the grit module - file top author
 * the git module - repo top commiter
+
+* dotfiles instead of yml files
+* yml causes too many problems
+* survery class should be base

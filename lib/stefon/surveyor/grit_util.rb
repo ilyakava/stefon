@@ -1,8 +1,11 @@
 module Stefon
   module Surveyor
-    # A class that abstracts dealing with the grit gem
+    # A class that abstracts dealing with the grit gem while respecting/knowing some
+    # restrictions, namely excluding authors
     class GritUtil
       attr_reader :repo
+
+      include Config::ExcludedAuthors
 
       CURRENT_USER = @repo.config["user.name"]
 
@@ -17,16 +20,20 @@ module Stefon
         repo.blame(filename, @last_xenocommit)
       end
 
-      def line_author(blame, line)
+      def valid_line_author(blame, line)
         matched_line = blame.lines.detect { |l| l.line.strip == line }
-        matched_line.commit.author.name
+        author = matched_line.commit.author.name
+        author if valid?(author)
       end
 
-      def file_top_author(blame, filename)
+      def file_valid_top_author(blame, filename)
         authored_lines = Hash.new(0)
-        blame.lines.each { |l| authored_lines[l.commit.author.name] += 1 }
-        # @excluded_authors.each { |a| authored_lines.delete(a) }
-        top_author = authored_lines.max_by { |a, numlines| numlines }.first
+        blame.lines.each do |l|
+          author = l.commit.author.name
+          authored_lines[author] += 1 if valid?(author)
+        end
+        top_author_line_pair = authored_lines.max_by { |a, numlines| numlines }
+        top_author_line_pair.first if top_author_line_pair
       end
     end
   end
