@@ -37,4 +37,4 @@ exclude authors from
 
 * dotfiles instead of yml files
 * yml causes too many problems
-* survery class should be base
+* todo - hunt down why blame.lines is blank sometimes

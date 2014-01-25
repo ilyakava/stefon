@@ -8,12 +8,10 @@ module Stefon
         super(0)
       end
 
-      def merge_scores(*score_hashes)
+      def merge_scores(scores_hash)
         dup = self.dup
-        score_hashes.each do |scores_hash|
-          scores_hash.each_pair do |name, score|
-            dup[name] += score
-          end
+        scores_hash.each_pair do |name, score|
+          dup[name] += score
         end
       end
     end

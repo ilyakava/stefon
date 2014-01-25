@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Stefon::ConfigLoader do
+describe Stefon::Config do
 
   describe 'reading configuration from files' do
     it 'reads the default configuration'

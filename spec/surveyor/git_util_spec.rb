@@ -12,6 +12,6 @@ describe Stefon::Surveyor::GitUtil do
   end
 
   describe '#top_commiter' do
-    it "doesn't return any authors that are excluded"
+    it "returns the top commiter for a repo"
   end
 end

@@ -3,27 +3,28 @@ module Stefon
   # asking for and combining their results. The editor decides what story
   # to run, i.e. to print recommendations or why recommendations are impossible
   class Editor
-    attr_reader :excluded_authors, :weights
+    attr_reader :weights
     attr_accessor :errors
 
     # The editor has a team of surveyors
     TEAM = [
-      AddedFiles.new,
-      AddedLines.new,
-      DeletedFiles.new,
-      DeletedLines.new
+      Surveyor::AddedFiles.new,
+      Surveyor::AddedLines.new,
+      Surveyor::DeletedFiles.new,
+      Surveyor::DeletedLines.new
     ]
 
-    def initialize(config)
-      self.excluded_authors = config.excluded_authors
-      self.weights = config.weights
-      self.errors = []
+    def initialize(weights)
+      @weights = weights
+      @errors = []
     end
 
 
     # The editor weights the importance of each surveyor's report
     def combine_reports
-      TEAM.collect(Surveyor::SurveyorStore.new) { |a, e| a.merge_scores(e.call) }
+      TEAM.reduce(Surveyor::SurveyorStore.new) do |a, e| 
+        a.merge_scores(e.call)
+      end
     end
 
     def summarize_results

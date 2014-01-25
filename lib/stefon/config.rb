@@ -4,21 +4,20 @@ module Stefon
     # This module is responsible for ruling out/in authors for the repository
     # based on user specification, or repo members on github
     module ExcludedAuthors
-      # exclude_filter = Proc.new
       def valid?(author)
         # exclude_filter(author) && include_filter(author)
         true
       end
     end
 
-    # This class is in charge of providing weights to rank certain kind of edits over
+    # This module is in charge of providing weights to rank certain kind of edits over
     # others, Eg. Deleting Stephanie's line of code is more important than adding
     # a line of code to Stephanie's file
-    class Weights
+    module Weights
       attr_reader :default
       attr_accessor :custom
 
-      def initialize(custom = nil)
+      def self.get(custom = nil)
         # in the future this will be provided arguments by the config loader
         # class after it loads them from yaml files
         default = {
