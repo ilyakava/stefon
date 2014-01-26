@@ -4,6 +4,13 @@
 if RUBY_VERSION >= '1.9.2'
   $LOAD_PATH.unshift(File.dirname(File.realpath(__FILE__)) + '/../lib')
 
+  # test for presence of sed dependency
+  sed_location = `which sed`
+  if sed_location == ""
+    puts 'Stefon requires the cmd line utility sed. Install it with: brew install sed'
+    exit(-1)
+  end
+
   require 'stefon'
   require 'benchmark'
 
@@ -11,6 +18,7 @@ if RUBY_VERSION >= '1.9.2'
 
   time = Benchmark.realtime do
     result = cli.run
+    puts "Stefon recommends that you ask for a code review from:"
     puts result
   end
 

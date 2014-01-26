@@ -27,7 +27,7 @@ module Stefon
       end
 
       def blame_for(filename)
-        repo.blame(filename, @last_xenocommit)
+        @repo.blame(filename, @last_xeno_commit)
       end
 
       def valid_line_author(blame, line)

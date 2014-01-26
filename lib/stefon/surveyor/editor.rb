@@ -30,7 +30,7 @@ module Stefon
     end
 
     def summarize_results
-      combine_reports.sort_by { |k, v| v }.first(3).map(&:last).flatten
+      combine_reports.sort_by { |k, v| v }.first(3).map(&:first).flatten
     end
   end
 end

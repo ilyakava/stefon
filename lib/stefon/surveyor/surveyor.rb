@@ -15,6 +15,7 @@ module Stefon
         scores_hash.each_pair do |name, score|
           dup[name] += score
         end
+        dup
       end
     end
 

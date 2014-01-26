@@ -6,7 +6,7 @@ describe "CLI" do
   describe "integration spec" do
     let(:cli) { Stefon::CLI.new }
 
-    context "with nothing to do" do
+    context "in general" do
       it "runs without errors" do
         cli.run
       end

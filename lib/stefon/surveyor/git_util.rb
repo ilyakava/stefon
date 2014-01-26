@@ -36,7 +36,7 @@ module Stefon
             next_line = git_diff_as_array[i + lines_ahead]
             # next_lines should not be filenames
             break if next_line[0..1] == filename_marker
-            block.call(line, next_line)
+            block.call(line[5..-1], next_line)
             lines_ahead += 1
           end
         end
