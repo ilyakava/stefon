@@ -30,7 +30,7 @@ module Stefon
     end
 
     def short_report
-      combine_short_reports.sort_by { |k, v| v }
+      combine_short_reports.sort_by { |k, v| -v }
     end
 
     def combine_full_reports
@@ -41,7 +41,7 @@ module Stefon
 
     def full_report
       # sort by the scores
-      combine_full_reports.sort_by { |k, v| combine_short_reports[k] }
+      combine_full_reports.sort_by { |k, v| -combine_short_reports[k] }
     end
 
     def summarize_results
