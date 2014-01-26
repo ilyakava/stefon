@@ -22,13 +22,13 @@ module Stefon
       def self.get(custom = nil)
         # in the future this will be provided arguments by the config loader
         # class after it loads them from yaml files
-        default = {
+        @default = {
           deleted_line: 2,
           deleted_file: 4,
           added_line: 1,
           added_file: 1
         }
-        default unless custom
+        @default unless custom
       end
     end
   end

@@ -51,7 +51,7 @@ which is identical to `stefon -f`, to see something like:
 
 
 ## Todos / Comming improvements
-* full test coverage
+* give identity of predominant author of a file you have deleted
 * use Github API to get a list of contributors for a project (and filter suggestions)
 * loading user preferences (list of users to exclude) - maybe with dotfiles instead of yml files
 * handle errors from surveryors
