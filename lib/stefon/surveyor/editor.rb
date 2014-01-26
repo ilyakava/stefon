@@ -22,7 +22,7 @@ module Stefon
 
     # The editor weights the importance of each surveyor's report
     def combine_reports
-      TEAM.reduce(Surveyor::SurveyorStore.new) do |a, e| 
+      TEAM.reduce(Surveyor::SurveyorStore.new) do |a, e|
         a.merge_scores(e.call)
       end
     end

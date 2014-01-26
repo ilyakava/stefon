@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+if RUBY_VERSION >= '1.9.2'
+  $LOAD_PATH.unshift(File.dirname(File.realpath(__FILE__)) + '/../lib')
+
+  require 'stefon'
+  require 'benchmark'
+
+  cli = Stefon::CLI.new
+
+  time = Benchmark.realtime do
+    result = cli.run
+  end
+
+  puts "Finished in #{time} seconds"
+  exit result
+else
+  puts 'Stefon supports only Ruby 1.9.2+'
+  exit(-1)
+end

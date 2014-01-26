@@ -3,10 +3,7 @@ require 'rake/tasklib'
 
 
 module Stefon
-  # Provides a custom rake task.
-  #
-  # require 'stefon/rake_task'
-  # Stefon::RakeTask.new
+  # Provides a single rake task.
   class RakeTask < Rake::TaskLib
     attr_accessor :name
     attr_accessor :verbose
@@ -24,12 +21,11 @@ module Stefon
 
     def run_task(verbose)
       require 'stefon'
-
       cli = CLI.new
       puts 'Running Stefon...' if verbose
       result = cli.run
       puts result
-      # abort('Stefon failed!') if fail_on_error
+      abort('Stefon failed!') if fail_on_error
     end
   end
 end
