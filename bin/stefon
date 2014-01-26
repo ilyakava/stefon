@@ -11,10 +11,11 @@ if RUBY_VERSION >= '1.9.2'
 
   time = Benchmark.realtime do
     result = cli.run
+    puts result
   end
 
   puts "Finished in #{time} seconds"
-  exit result
+  exit(0)
 else
   puts 'Stefon supports only Ruby 1.9.2+'
   exit(-1)
