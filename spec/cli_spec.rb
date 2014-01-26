@@ -8,7 +8,7 @@ describe "CLI" do
 
     context "in general" do
       it "runs without errors" do
-        cli.run
+        cli.run({limit: 4})
       end
     end
   end

@@ -25,7 +25,7 @@ module Stefon
       require 'stefon'
       cli = CLI.new
       puts 'Running Stefon...' if verbose
-      result = cli.run
+      result = cli.run({limit: 4})
       puts result
       abort('Stefon failed!') if fail_on_error
     end
