@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require "stefon/version"
 require "stefon/cli"
 require "stefon/config"

@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module Stefon
   # This class is responsible for handling the command line interface
   class CLI

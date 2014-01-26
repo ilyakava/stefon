@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module Stefon
   # The editor is responsible for forming a team of surveyors and
   # asking for and combining their results. The editor decides what story

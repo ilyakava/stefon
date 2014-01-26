@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module Stefon
   # this class represents extra information that the editor needs to know before writing a script for Stefon
   module Config

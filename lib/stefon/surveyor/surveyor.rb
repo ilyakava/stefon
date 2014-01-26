@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module Stefon
   module Surveyor
     # A store for the scores that each surveyor calculates, it takes

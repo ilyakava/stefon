@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module Stefon
   module Surveyor
     class AddedFiles < Surveyor::Base

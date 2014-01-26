@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module Stefon
   module Surveyor
     # A module of usefull utils for dealing with the git cli directly
