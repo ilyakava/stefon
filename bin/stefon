@@ -13,16 +13,34 @@ if RUBY_VERSION >= '1.9.2'
 
   require 'stefon'
   require 'benchmark'
+  require 'trollop'
+  require 'pry'
 
-  cli = Stefon::CLI.new
+  cli, result, opts = Stefon::CLI.new
 
   time = Benchmark.realtime do
-    result = cli.run
-    puts "Stefon recommends that you ask for a code review from:"
-    puts result
+    opts = Trollop::options do
+      version "stefon #{Stefon::VERSION} (c) 2014 Ilya Kavalerov"
+      banner <<-EOS
+        Stefon is a utilty that recommends who to ask for a code review.
+        He lets you know whose code you are affecting the most.
+
+        Usage:
+               stefon [options]
+        where [options] are:
+      EOS
+
+      opt :limit, "Limit the number of people that stephon suggests sending a code review to", :default => 4,
+      :short => "-l"
+      opt :full_report, "Boolean for whether or not to include information about how you affected \
+      someone's code", :default => false, :short => "-f"
+    end
+    result = cli.run(opts)
   end
 
   puts "Finished in #{time} seconds"
+  puts "Stefon recommends that you ask for a code review from:" unless opts[:full_report]
+  puts result
   exit(0)
 else
   puts 'Stefon supports only Ruby 1.9.2+'

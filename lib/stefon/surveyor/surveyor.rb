@@ -6,8 +6,8 @@ module Stefon
     # the form of a hash where author names are keys, and points are
     # values. Points are counts of lines or commits that belong to a person
     class SurveyorStore < ::Hash
-      def initialize
-        super(0)
+      def initialize(default_val = 0)
+        super(default_val)
       end
 
       def merge_scores(scores_hash)
@@ -23,11 +23,13 @@ module Stefon
     # This class calculates whose code the gem user is affecting
     # the most for a particular kind of behavior (eg. line / file deletion)
     class Base
+      attr_reader :weight
       attr_accessor :scores
 
-      def initialize
+      def initialize(weight)
         @@grit ||= GritUtil.new
-        self.scores = SurveyorStore.new
+        @scores = SurveyorStore.new
+        @weight = weight
       end
     end
   end
