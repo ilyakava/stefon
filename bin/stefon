@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 
-if RUBY_VERSION >= '1.9.2'
+if RUBY_VERSION >= '1.9.2' && RUBY_VERSION < '2.0.0'
   $LOAD_PATH.unshift(File.dirname(File.realpath(__FILE__)) + '/../lib')
 
   # test for presence of sed dependency
@@ -29,6 +29,6 @@ if RUBY_VERSION >= '1.9.2'
   puts result
   exit(0)
 else
-  puts 'Stefon supports only Ruby 1.9.2+'
+  puts 'Stefon supports only Ruby versions 1.9.X where X >= 2'
   exit(-1)
 end

@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
     A utility that recommends who to ask for a code review.
     Stefon tells you whose code you are affecting the most.
   EOF
-  spec.summary       = %q{A utilty that recommends who to ask for a code review}
+  spec.summary       = %q{A utility that recommends who to ask for a code review}
   spec.homepage      = "https://github.com/ilyakava/stefon"
   spec.license       = "MIT"
 
@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency "grit", "2.5.0"
-  spec.add_runtime_dependency "trollop"
+  spec.add_runtime_dependency "trollop", "~> 2.0"
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
 end
