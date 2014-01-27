@@ -1,7 +1,8 @@
 # encoding: utf-8
 
 module Stefon
-  # this class represents extra information that the editor needs to know before writing a script for Stefon
+  # this class represents extra information that the editor needs
+  # to know before writing a script for Stefon
   module Config
     # This module is responsible for ruling out/in authors for the repository
     # based on user specification, or repo members on github
@@ -12,9 +13,9 @@ module Stefon
       end
     end
 
-    # This module is in charge of providing weights to rank certain kind of edits over
-    # others, Eg. Deleting Stephanie's line of code is more important than adding
-    # a line of code to Stephanie's file
+    # This module is in charge of providing weights to rank certain kind of
+    # edits over others, Eg. Deleting Stephanie's line of code is more
+    # important than adding a line of code to Stephanie's file
     module Weights
       attr_reader :default
       attr_accessor :custom

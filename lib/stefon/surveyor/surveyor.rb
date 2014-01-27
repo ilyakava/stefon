@@ -17,6 +17,14 @@ module Stefon
         end
         dup
       end
+
+      def weight_scores(weight)
+        dup = self.dup
+        dup.each_pair do |name, score|
+          dup[name] *= weight
+        end
+        dup
+      end
     end
 
     # A scaffold for concrete surveyors, meant to be extended

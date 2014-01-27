@@ -12,17 +12,19 @@ module Stefon
       include Config::ExcludedAuthors
 
       # About the attribute names
-      # num_sui_commits is important when a user makes multiple commits when working on
-      # someone else's project, to ensure that diffs do not include recent changes made by
-      # the user, the number of commits by the user (sui ~ self / origin) should be taken into account
-      # when calling a diff, so as to compare changes against the last commit not made
-      # by the user (self), but by another person (xeno ~ not self / not origin)
+      # num_sui_commits is important when a user makes multiple commits when
+      # working on someone else's project, to ensure that diffs do not
+      # include recent changes made by the user, the number of commits by the
+      # user (sui ~ self / origin) should be taken into account when calling
+      # a diff, so as to compare changes against the last commit not made by
+      # the user (self), but by another person (xeno ~ not self / not origin)
       def initialize
-        @repo = Grit::Repo.new(".")
+        @repo = Grit::Repo.new('.')
         commits = @repo.commits(GitUtil::CURRENT_BRANCH)
-        # If you are the only commiter _ever_,  then num_sui_commits would be irrelevant
-        # perhaps an error should be raised? Since in this case only yourself would be recommended
-        @num_sui_commits = commits.find_index { |c| c.author.name != @repo.config["user.name"] } || 0
+        # If you are the only commiter _ever_,  then num_sui_commits would be
+        # irrelevant perhaps an error should be raised? Since in this case
+        # only yourself would be recommended
+        @num_sui_commits = commits.find_index { |c| c.author.name != @repo.config['user.name'] } || 0
         @last_xeno_commit = commits[@num_sui_commits]
       end
 

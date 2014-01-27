@@ -4,12 +4,14 @@ module Stefon
   module Surveyor
     class DeletedLines < Surveyor::Base
       def call
-        score_deleted_lines
+        score_deleted_lines.weight_scores(@weight)
       end
 
       def call_verbose
         array_version = score_deleted_lines.to_a.map do |pair|
-          [pair.first, ["Deleted #{pair.last} #{pair.last == 1 ? 'line' : 'lines' } written by: #{pair.first}"]]
+          desc = "Deleted #{pair.last} #{pair.last == 1 ? 'line' : 'lines' } " +
+            "written by: #{pair.first}"
+          [pair.first, [desc]]
         end
         Surveyor::SurveyorStore[array_version]
       end
@@ -19,7 +21,7 @@ module Stefon
           blame = @@grit.blame_for(filename)
           lines.each do |deleted_line|
             valid_author = @@grit.valid_line_author(blame, deleted_line)
-            @scores[valid_author] += 1 if valid_author * @weight
+            @scores[valid_author] += 1 if valid_author
           end
         end
         @scores

@@ -6,8 +6,9 @@ if RUBY_VERSION >= '1.9.2'
 
   # test for presence of sed dependency
   sed_location = `which sed`
-  if sed_location == ""
-    puts 'Stefon requires the cmd line utility sed. Install it with: brew install sed'
+  if sed_location == ''
+    puts 'Stefon requires the cmd line utility sed.\
+      Install it with: brew install sed'
     exit(-1)
   end
 
@@ -18,12 +19,13 @@ if RUBY_VERSION >= '1.9.2'
   cli, result, opts = Stefon::CLI.new
 
   time = Benchmark.realtime do
-    opts = Trollop::options(&Stefon::Options.get)
+    opts = Trollop.options(&Stefon::Options.get)
     result = cli.run(opts)
   end
 
   puts "Finished in #{time} seconds"
-  puts "Stefon recommends that you ask for a code review from:" unless opts[:full_report]
+  header = 'Stefon recommends that you ask for a code review from:'
+  puts header unless opts[:full_report]
   puts result
   exit(0)
 else

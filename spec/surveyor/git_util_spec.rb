@@ -28,7 +28,7 @@ describe Stefon::Surveyor::GitUtil do
       ]
     }}
     let(:save_structure) { Hash.new([]) }
-    let(:block) { lambda { |filename, line| save_structure[filename] += [line] } }
+    let(:block) { ->(filename, line) { save_structure[filename] += [line] } }
 
     it 'correctly yields lines belonging to files' do
       Stefon::Surveyor::GitUtil.lines_by_file(git_diff_as_array, '--', block)
@@ -38,13 +38,13 @@ describe Stefon::Surveyor::GitUtil do
 
   describe '#diff_as_array' do
     it 'correctly formats git diff output for - mode' do
-      pending("Would test this, but relies on console methods like sed")
+      pending('Would test this, but relies on console methods like sed')
     end
   end
 
   describe '#top_commiter' do
-    it "returns the top commiter for a repo" do
-      pending("Would test this, but relies on console methods like sed")
+    it 'returns the top commiter for a repo' do
+      pending('Would test this, but relies on console methods like sed')
     end
   end
 end

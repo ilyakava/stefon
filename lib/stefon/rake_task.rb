@@ -3,7 +3,6 @@
 require 'rake'
 require 'rake/tasklib'
 
-
 module Stefon
   # Provides a single rake task.
   class RakeTask < Rake::TaskLib
@@ -25,7 +24,7 @@ module Stefon
       require 'stefon'
       cli = CLI.new
       puts 'Running Stefon...' if verbose
-      result = cli.run({limit: 4})
+      result = cli.run(limit: 4)
       puts result
       abort('Stefon failed!') if fail_on_error
     end
