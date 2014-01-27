@@ -52,7 +52,7 @@ which is identical to `stefon -f`, to see something like:
 
 
 ## Todos / Comming improvements
-* give identity of predominant author of a file you have deleted
+* use rugged instead of grit for ruby 2 support
 * use Github API to get a list of contributors for a project (and filter suggestions)
 * loading user preferences (list of users to exclude) - maybe with dotfiles instead of yml files
 * handle errors from surveryors
