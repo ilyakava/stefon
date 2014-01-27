@@ -3,7 +3,7 @@
 Get tips on who to ask for a code review.
 
 A name inspired by the SNL character Bill Hader played:
-![stefon on wikipedia][http://upload.wikimedia.org/wikipedia/en/c/c1/Stefon%2C_SNL_Character.jpg]
+![stefon on wikipedia](http://upload.wikimedia.org/wikipedia/en/c/c1/Stefon%2C_SNL_Character.jpg)
 
 SNL Stefon always gave advice on the best places to go to in the city. Stefon the gem will do the same: he tells you who to go to for a code review (or send a PR to) based on whose code you changed most.
 
@@ -46,6 +46,7 @@ which is identical to `stefon -f`, to see something like:
     Deleted 2 lines written by: Cindy Sherman
     Added 1 line to files written by: Ed Ruscha
     Deleted 1 line written by: Ed Ruscha
+    Deleted 1 file written by: Ed Ruscha
     Deleted 1 line written by: Gerhard Richter
     The top commiter in this repo is: Van Gogh
 
