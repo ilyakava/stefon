@@ -22,7 +22,7 @@ module Stefon
         # none for all looks at a diff, optionally matches lines starting
         # with mode char, cut off first char of each line
         %x(git diff HEAD~#{GritUtil.new.num_sui_commits} -U0 |
-          #{mode ? "grep ^#{mode} | " : ""} sed 's/^.//'
+          #{mode ? "grep ^#{mode} | " : ''} sed 's/^.//'
         ).split("\n").map(&:strip)
       end
 
@@ -39,7 +39,9 @@ module Stefon
         git_diff_as_array.each_with_index do |e, i|
           line, lines_ahead = e, 1
           # if the line is a filename, we want it to point to its lines
-          while (line[0..1] == filename_marker) && (i + lines_ahead < git_diff_as_array.length) do
+          while (line[0..1] == filename_marker) &&
+            (i + lines_ahead < git_diff_as_array.length)
+
             next_line = git_diff_as_array[i + lines_ahead]
             # next_lines should not be filenames
             break if next_line[0..1] == filename_marker

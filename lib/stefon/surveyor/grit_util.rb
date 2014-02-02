@@ -4,27 +4,35 @@ require 'grit'
 
 module Stefon
   module Surveyor
-    # A class that abstracts dealing with the grit gem while respecting/knowing some
-    # restrictions, namely excluding authors
+    # A class that abstracts dealing with the grit gem while
+    # respecting/knowing some restrictions, namely excluding authors
     class GritUtil
-      attr_reader :repo, :num_sui_commits, :last_xenocommit
+      attr_reader :repo
+      # The number of commits by the user (sui ~ self / origin).
+      # This is important to take into account when the user makes multiple
+      # commits when working on someone else's project, to ensure that diffs
+      # do not include recent changes made by the user in her last few commits
+      attr_reader :num_sui_commits
+      # The last commit not made by the user (sui ~ self) but by another
+      # person (xeno ~ not self / not origin).
+      # This is important to take into account when the user makes multiple
+      # commits when working on someone else's project, to ensure that diffs
+      # do not include recent changes made by the user in her last few commits
+      attr_reader :last_xenocommit
 
       include Config::ExcludedAuthors
 
-      # About the attribute names
-      # num_sui_commits is important when a user makes multiple commits when
-      # working on someone else's project, to ensure that diffs do not
-      # include recent changes made by the user, the number of commits by the
-      # user (sui ~ self / origin) should be taken into account when calling
-      # a diff, so as to compare changes against the last commit not made by
-      # the user (self), but by another person (xeno ~ not self / not origin)
+      # sets num_sui_commits and last_xenocommit attributes, if the current
+      # user is the only commiter in the repo, these are set to the most
+      # recent commit, since in this case, stefon would always recommend
+      # the current user anyway. In the future, an error may be raised here
       def initialize
         @repo = Grit::Repo.new('.')
         commits = @repo.commits(GitUtil::CURRENT_BRANCH)
-        # If you are the only commiter _ever_,  then num_sui_commits would be
-        # irrelevant perhaps an error should be raised? Since in this case
-        # only yourself would be recommended
-        @num_sui_commits = commits.find_index { |c| c.author.name != @repo.config['user.name'] } || 0
+        @num_sui_commits = commits.find_index do |commit|
+          commit.author.name != @repo.config['user.name']
+        end
+        @num_sui_commits ||= 0
         @last_xeno_commit = commits[@num_sui_commits]
       end
 
@@ -33,7 +41,7 @@ module Stefon
       end
 
       def valid_line_author(blame, line)
-        matched_line = blame.lines.detect { |l| l.line.strip == line }
+        matched_line = blame.lines.find { |l| l.line.strip == line }
         author = matched_line.commit.author.name if matched_line
         author if valid?(author)
       end

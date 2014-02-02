@@ -13,6 +13,7 @@ module Stefon
 
   # This module holds custom behavior for dealing with the gem trollop
   module Options
+    # rubocop:disable MethodLength
     def self.get
       proc do
         version "stefon #{Stefon::VERSION} (c) 2014 Ilya Kavalerov"
@@ -24,14 +25,18 @@ module Stefon
                  stefon [options]
           where [options] are:
         EOS
-
-        opt :limit, 'Limit the number of people that stephon suggests sending ' +
-          'a code review to',
-          default: 4, short: '-l'
-        opt :full_report, "Boolean for whether or not to include information " +
-          "about how you affected someone's code",
-          default: false, short: '-f'
+        opt :limit,
+            'Limit the number of people that stephon suggests ' +
+              'sending a code review to',
+            default: 4,
+            short: '-l'
+        opt :full_report,
+            'Boolean for whether or not to include ' +
+              "information about how you affected someone's code",
+            default: false,
+            short: '-f'
       end
     end
+    # rubocop:enable MethodLength
   end
 end

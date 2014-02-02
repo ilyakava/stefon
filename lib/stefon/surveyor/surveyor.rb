@@ -34,8 +34,10 @@ module Stefon
       attr_reader :weight
       attr_accessor :scores
 
+      class << self; attr_accessor :grit end
+
       def initialize(weight)
-        @@grit ||= GritUtil.new
+        @grit ||= GritUtil.new
         @scores = SurveyorStore.new
         @weight = weight
       end

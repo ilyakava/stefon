@@ -4,29 +4,30 @@ require 'spec_helper'
 
 describe Stefon::Surveyor::GitUtil do
   describe '#lines_by_file' do
-    let(:git_diff_as_array) {[
-      "-- a/bin/stefon",
-      "-- a/lib/stefon/surveyor/deleted_lines.rb",
-      "-- a/lib/stefon/surveyor/git_util.rb",
-      "block.call(line, next_line)",
-      "-- a/lib/stefon/surveyor/grit_util.rb",
-      "repo.blame(filename, @last_xenocommit)",
-      "-- a/spec/surveyor/git_util_spec.rb",
-      "describe Stefon::Surveyor::GitUtil do",
-      "describe '#lines_by_file' do",
-      "it 'correctly yields lines belonging to files'",
-      "end"
-    ]}
-    let(:right_structure) {{
-      "lib/stefon/surveyor/git_util.rb" => ["block.call(line, next_line)"],
-      "lib/stefon/surveyor/grit_util.rb" => ["repo.blame(filename, @last_xenocommit)"],
-      "spec/surveyor/git_util_spec.rb" => [
-        "describe Stefon::Surveyor::GitUtil do",
-        "describe '#lines_by_file' do",
-        "it 'correctly yields lines belonging to files'",
-        "end"
+    let(:git_diff_as_array) do
+      [
+        '-- a/bin/stefon',
+        '-- a/lib/stefon/surveyor/deleted_lines.rb',
+        '-- a/lib/stefon/surveyor/git_util.rb',
+        'block.call(line, next_line)',
+        '-- a/spec/surveyor/git_util_spec.rb',
+        'describe Stefon::Surveyor::GitUtil do',
+        'describe "#lines_by_file" do',
+        'it "correctly yields lines belonging to files"',
+        'end'
       ]
-    }}
+    end
+    let(:right_structure) do
+      {
+        'lib/stefon/surveyor/git_util.rb' => ['block.call(line, next_line)'],
+        'spec/surveyor/git_util_spec.rb' => [
+          'describe Stefon::Surveyor::GitUtil do',
+          'describe "#lines_by_file" do',
+          'it "correctly yields lines belonging to files"',
+          'end'
+        ]
+      }
+    end
     let(:save_structure) { Hash.new([]) }
     let(:block) { ->(filename, line) { save_structure[filename] += [line] } }
 

@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-$:.unshift(File.dirname(__FILE__) + '/../lib')
+$LOAD_PATH.unshift(File.dirname(__FILE__) + '/../lib')
 require 'stefon'
 require 'pry'
 

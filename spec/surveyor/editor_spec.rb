@@ -3,13 +3,15 @@
 require 'spec_helper'
 
 describe 'Editor' do
-  let(:options) {{
-    limit: 4,
-    deleted_line: 2,
-    deleted_file: 4,
-    added_line: 1,
-    added_file: 1
-  }}
+  let(:options) do
+    {
+      limit: 4,
+      deleted_line: 2,
+      deleted_file: 4,
+      added_line: 1,
+      added_file: 1
+    }
+  end
 
   describe 'summarize results (integration)' do
     before(:each) do
@@ -45,8 +47,8 @@ describe 'Editor' do
       options[:full_report] = true
       editor = Stefon::Editor.new(options)
       results = editor.summarize_results
-      results.any? { |line| line == 'Deleted 4 lines by Cy Twombly' }.should be_true
-      results.any? { |line| line == 'Deleted 2 lines by Christian Boltanski' }.should be_true
+      results.should include('Deleted 4 lines by Cy Twombly')
+      results.should include('Deleted 2 lines by Christian Boltanski')
       results.each do |reported_result|
         unless reported_result =~ /The top commiter in this repo is/
           reported_result.should =~ /\d/

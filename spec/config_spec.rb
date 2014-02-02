@@ -21,7 +21,7 @@ describe Stefon::Config do
 
   context 'with github enabled' do
     describe 'merging configurations' do
-      it 'ensures github user configuration takes prescedence over user yml config'
+      it 'ensures user github config takes prescedence over user yml config'
     end
   end
 end

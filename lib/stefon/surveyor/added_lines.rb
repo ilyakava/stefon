@@ -21,9 +21,8 @@ module Stefon
       def score_added_lines
         # give credit to the most frequent commiter in the file
         added_lines_by_file.each_pair do |filename, numlines|
-          blame = @@grit.blame_for(filename)
-          top_author = @@grit.file_valid_top_author(blame, filename)
-          # multiplied by the number of lines that are added in the staged commit
+          blame = @grit.blame_for(filename)
+          top_author = @grit.file_valid_top_author(blame, filename)
           @scores[top_author] += numlines
         end
         @scores

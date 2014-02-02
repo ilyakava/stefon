@@ -8,7 +8,6 @@ module Stefon
     attr_reader :options, :team
     attr_accessor :errors
 
-
     def initialize(options)
       @options = options
       # currently unused
