@@ -1,6 +1,6 @@
 # Stefon
 
-Get tips on who to ask for a code review.
+Get tips on who to ask for a code review, runs on Ruby 1.9.2 and above.
 
 A name inspired by the SNL character Bill Hader played:
 ![stefon on wikipedia](http://upload.wikimedia.org/wikipedia/en/c/c1/Stefon%2C_SNL_Character.jpg)
@@ -52,7 +52,6 @@ which is identical to `stefon -f`, to see something like:
 
 
 ## Todos / Comming improvements
-* use rugged instead of grit for ruby 2 support
 * use Github API to get a list of contributors for a project (and filter suggestions)
 * loading user preferences (list of users to exclude) - maybe with dotfiles instead of yml files
 * handle errors from surveryors
