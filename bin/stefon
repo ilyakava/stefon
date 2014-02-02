@@ -23,8 +23,8 @@ if RUBY_VERSION >= '1.9.2'
     result = cli.run(opts)
   end
 
-  puts "Finished in #{time} seconds"
-  header = 'Stefon recommends that you ask for a code review from:'
+  puts "Stefon finished in #{time} seconds"
+  header = 'The hottest new people to ask for a code review from are:'
   puts header unless opts[:full_report]
   puts result
   exit(0)

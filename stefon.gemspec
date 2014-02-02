@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Ilya Kavalerov']
   spec.email         = ['ilya@artsymail.com']
   spec.description   = <<-EOF
-    A utility that recommends who to ask for a code review.
+    A pre-commit utility that recommends who to ask for a code review.
     Stefon tells you whose code you are affecting the most.
   EOF
   spec.summary       = %q{A utility that recommends who to ask for a code review}

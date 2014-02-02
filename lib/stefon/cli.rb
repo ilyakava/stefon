@@ -21,6 +21,8 @@ module Stefon
           Stefon is a utilty that recommends who to ask for a code review.
           He lets you know whose code you are affecting the most.
 
+          Run Stefon before a commit, maybe as a pre-commit hook.
+
           Usage:
                  stefon [options]
           where [options] are:
