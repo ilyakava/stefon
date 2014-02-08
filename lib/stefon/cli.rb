@@ -28,12 +28,12 @@ module Stefon
           where [options] are:
         EOS
         opt :limit,
-            'Limit the number of people that stephon suggests ' +
+            'Limit the number of people that stephon suggests '\
               'sending a code review to',
             default: 4,
             short: '-l'
         opt :full_report,
-            'Boolean for whether or not to include ' +
+            'Boolean for whether or not to include '\
               "information about how you affected someone's code",
             default: false,
             short: '-f'
