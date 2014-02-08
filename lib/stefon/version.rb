@@ -2,5 +2,5 @@
 
 # The outermost container for the gem, here with the version info
 module Stefon
-  VERSION = '0.0.3'
+  VERSION = '0.0.4'
 end
