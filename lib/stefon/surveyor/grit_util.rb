@@ -27,13 +27,21 @@ module Stefon
       # recent commit, since in this case, stefon would always recommend
       # the current user anyway. In the future, an error may be raised here
       def initialize
-        @repo = Grit::Repo.new('.')
+        @repo = Grit::Repo.new find_git_repo
         commits = @repo.commits(GitUtil::CURRENT_BRANCH)
         @num_sui_commits = commits.find_index do |commit|
           commit.author.name != @repo.config['user.name']
         end
         @num_sui_commits ||= 0
         @last_xeno_commit = commits[@num_sui_commits]
+      end
+
+      def find_git_repo
+        until File.exist?('.git')
+          fail 'Could not find a git repository!' if Dir.pwd == '/'
+          Dir.chdir '..'
+        end
+        Dir.pwd
       end
 
       def blame_for(filename)
