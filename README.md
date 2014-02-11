@@ -1,5 +1,7 @@
 # Stefon
 
+[![Build Status](https://travis-ci.org/ilyakava/stefon.png?branch=master)](https://travis-ci.org/ilyakava/stefon)
+
 Get tips on who to ask for a code review, runs on Ruby 1.9.2 and above.
 
 A name inspired by the SNL character Bill Hader played:
