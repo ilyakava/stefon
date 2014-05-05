@@ -4,7 +4,14 @@
 
 Get tips on who to ask for a code review, runs on Ruby 1.9.2 and above.
 
+### Looks like:
+
+![stefon cmd line action](http://f.cl.ly/items/2E1r332W0c3j2O3d2W2z/stefon_hi.gif)
+
+### Mascot
+
 A name inspired by the SNL character Bill Hader played:
+
 ![stefon on wikipedia](http://upload.wikimedia.org/wikipedia/en/c/c1/Stefon%2C_SNL_Character.jpg)
 
 SNL Stefon always gave advice on the best places to go to in the city. Stefon the gem will do the same: he tells you who to go to for a code review (or send a PR to) based on whose code you changed most.
