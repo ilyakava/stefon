@@ -8,6 +8,8 @@ Get tips on who to ask for a code review, runs on Ruby 1.9.2 and above.
 
 ![stefon cmd line action](http://f.cl.ly/items/2E1r332W0c3j2O3d2W2z/stefon_hi.gif)
 
+This preview features my local changes in the [pre-commit gem](https://github.com/jish/pre-commit).
+
 ### Mascot
 
 A name inspired by the SNL character Bill Hader played:
