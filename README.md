@@ -83,3 +83,7 @@ which is identical to `stefon -f`, to see something like:
 ### The narrative of stefon's code
 
 Stefon lives in the shell. We ask for suggestions by interacting with the `CLI` (using the trollop gem for getting cmd line options), the `CLI` gets an `Editor` to write a script for Stefon. The `Editor` has a team of `Surveyors` that look for certain changes in the codebase (`AddedLines`, `DeletedFiles`, etc.). To detect these changes, the `Surveyors` use `GitUtils` (a wrapper for cmd line git interface) and `GritUtils` (a wrapper for another gem called grit), and store scores in a `SurveyorStor`, which acts like a `Hash`. The `Editor` is responsible for assembling the team, telling them how detailed of a report he needs (`--full-report` option) and for how many users (--limit option), and combinning their reports, so that the `CLI` can print it out on the screen.
+
+## License
+
+(c) Artsy, 2015 + Ilya Kavalerov
