@@ -87,3 +87,5 @@ Stefon lives in the shell. We ask for suggestions by interacting with the `CLI` 
 ## License
 
 (c) Artsy, 2015 + Ilya Kavalerov
+
+MIT
